@@ -65,3 +65,11 @@ const createRecord = async function (header, body) {
     return { message: "Record creation is failed." };
   }
 };
+
+export {
+  getAllRecords,
+  updateRecord,
+  deleteRecord,
+  createRecord,
+  getRecordById,
+};
