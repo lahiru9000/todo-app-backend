@@ -20,16 +20,17 @@ app.get("/", (req, res) => {
 
 //get all todos
 app.get("/todos", async (req, res) => {
-  console.log("/todos");
-  const todos = await getAllRecords();
-  console.log(todos);
-  res.send(todos);
+  const currentTodos = await getAllRecords();
+  res.send(currentTodos);
 });
 
 //get todo by id
 app.get("/todos/:id", async (req, res) => {
-  const todos = await getRecordById(req.params.id);
-  res.send(todos);
+  const currentTodo = await getRecordById(req.params.id);
+  if(!currentTodo){
+    return res.status(404).send("Todo is not found.")
+  }
+  res.send(currentTodo);
 });
 
 // update a todo
