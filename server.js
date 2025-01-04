@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import {
   createRecord,
   deleteRecord,
@@ -8,10 +9,17 @@ import {
   updateRecord,
 } from "./database.js";
 
+//init dotenv configs
 dotenv.config();
 
+//init express app
 const app = express();
+
+//middlewares
 app.use(express.json());
+app.use(cors());
+
+//use environment variables
 const port = process.env.SERVER_PORT;
 
 app.get("/", (req, res) => {
